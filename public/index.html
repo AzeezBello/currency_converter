@@ -43,7 +43,7 @@
                 <div class="card-body">
                        <div>
                           <div class="text-black-50 col-12 col-md-12 "><strong>Amount:</strong>
-                        <input type="text" value="1" name="amount" id="amount" placeholder="Enter amount" class="form-control form-control-lg"/>
+                        <input type="number" value="1" min="0" step="any" inputmode="decimal" name="amount" id="amount" placeholder="Enter amount" class="form-control form-control-lg"/>
                       </div>
                     </div>
                     <div>
@@ -686,9 +686,10 @@
                
                   <div class="special">
                     <input type="text" id="result" readonly placeholder="Press Convert button" class="form-control form-control-lg" />
+                    <small id="status-message" class="form-text text-muted mt-2"></small>
                   </div>
                   <div class="special" >
-                    <button type="submit" onclick="convertCurrency()" class="btn btn-block btn-lg btn-primary postfix">Convert</button>
+                    <button type="button" id="convert-btn" class="btn btn-block btn-lg btn-primary postfix">Convert</button>
                   </div>
                 </div>
               
@@ -750,54 +751,6 @@
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom Javascript-->
-  <!--<script src="/js/currency-converter.js"></script>-->
-   <script src="/js/index.js"></script>
-
-  <!--idb Script-->
-  <script src="https://github.com/jakearchibald/idb/blob/master/lib/idb.js"></script>
-
-
-
-
-
-
-  <script>
-function convertCurrency(){
-
-//debugger
-   let from = document.getElementById("from").value;
-   let to = document.getElementById("to").value;
-   let fromAmount = document.getElementById("amount").value;
-   let query = from+"_"+to;
-   // let toAmount = document.getElementById("toAmount");
-   // https://free.currencyconverterapi.com/api/v5/convert?q=USD_PHP,PHP_USD&compact=ultra
-   let urlconvert= 'https://free.currencyconverterapi.com/api/v5/convert?q=' + query + '&compact=ultra';
-   fetch(urlconvert).then(response=>{
-       return response.json();   
-}).then(rates=> {
-    
-    let amount = fromAmount * rates[query];
-    document.getElementById("result").value = amount.toFixed(2);
-   //  console.log(amount)
-});
-}
-// convertCurrency();  
-</script>
-        
-
- <script>
-            if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-              navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                // Registration was successful
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-              }, function(err) {
-                // registration failed :(
-                console.log('ServiceWorker registration failed: ', err);
-              });
-            });
-          }
-</script>    
+  <script src="/js/currency-converter.js" defer></script>
     </body>
 </html>
