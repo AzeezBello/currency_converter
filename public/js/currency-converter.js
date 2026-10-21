@@ -240,7 +240,7 @@
     }
 
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js').catch(function () {
+      navigator.serviceWorker.register('./sw.js').catch(function () {
         // Avoid blocking app functionality when SW registration fails.
       });
     });

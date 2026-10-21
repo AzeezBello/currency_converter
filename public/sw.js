@@ -1,20 +1,20 @@
-var STATIC_CACHE = 'currency-converter-static-v2';
+var STATIC_CACHE = 'currency-converter-static-v3';
 var APP_SHELL = [
-  '/',
-  '/index.html',
-  '/vendor/bootstrap/css/bootstrap.min.css',
-  '/css/landing-page.css',
-  '/img/bg-masthead.jpg',
-  '/img/bg-showcase-1.jpg',
-  '/img/bg-showcase-2.jpg',
-  '/img/bg-showcase-3.jpg',
-  '/img/favicon.png',
-  '/img/testimonials-1.jpg',
-  '/img/testimonials-2.jpg',
-  '/img/testimonials-3.jpg',
-  '/vendor/jquery/jquery.min.js',
-  '/vendor/bootstrap/js/bootstrap.bundle.min.js',
-  '/js/currency-converter.js'
+  './',
+  './index.html',
+  './vendor/bootstrap/css/bootstrap.min.css',
+  './css/landing-page.css',
+  './img/bg-masthead.jpg',
+  './img/bg-showcase-1.jpg',
+  './img/bg-showcase-2.jpg',
+  './img/bg-showcase-3.jpg',
+  './img/favicon.png',
+  './img/testimonials-1.jpg',
+  './img/testimonials-2.jpg',
+  './img/testimonials-3.jpg',
+  './vendor/jquery/jquery.min.js',
+  './vendor/bootstrap/js/bootstrap.bundle.min.js',
+  './js/currency-converter.js'
 ];
 
 self.addEventListener('install', function (event) {

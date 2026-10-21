@@ -1,8 +1,8 @@
 {
   "name": "AzeezBello",
-  "scope": "/",
+  "scope": "./",
   "icons": [{
-    "src": "/imgs/favicon.png",
+    "src": "img/favicon.png",
     "sizes": "144x144",
     "type": "image/png"
   }],
