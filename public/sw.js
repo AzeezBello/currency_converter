@@ -1,12 +1,9 @@
-var STATIC_CACHE = 'currency-converter-static-v4';
+var STATIC_CACHE = 'currency-converter-static-v5';
 var APP_SHELL = [
   './',
   './index.html',
   './favicon.png',
-  './vendor/bootstrap/css/bootstrap.min.css',
-  './vendor/font-awesome/css/font-awesome.min.css',
   './css/landing-page.css',
-  './img/bg-masthead.jpg',
   './js/currency-converter.js'
 ];
 

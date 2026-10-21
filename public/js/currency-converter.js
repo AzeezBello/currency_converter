@@ -5,25 +5,168 @@
   var STORAGE_KEY = 'currency-converter-rates-v1';
   var DEFAULT_FROM = 'USD';
   var DEFAULT_TO = 'PHP';
-  var CURRENCY_CODES = [
-    'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AUD', 'AWG', 'AZN',
-    'BAM', 'BBD', 'BDT', 'BGN', 'BHD', 'BIF', 'BND', 'BOB', 'BRL', 'BSD',
-    'BTC', 'BTN', 'BWP', 'BYN', 'BYR', 'BZD', 'CAD', 'CDF', 'CHF', 'CLP',
-    'CNY', 'COP', 'CRC', 'CUP', 'CVE', 'CZK', 'DJF', 'DKK', 'DOP', 'DZD',
-    'EGP', 'ERN', 'ETB', 'EUR', 'FJD', 'FKP', 'GBP', 'GEL', 'GHS', 'GIP',
-    'GMD', 'GNF', 'GTQ', 'GYD', 'HKD', 'HNL', 'HRK', 'HTG', 'HUF', 'IDR',
-    'ILS', 'INR', 'IQD', 'IRR', 'ISK', 'JMD', 'JOD', 'JPY', 'KES', 'KGS',
-    'KHR', 'KMF', 'KPW', 'KRW', 'KWD', 'KYD', 'KZT', 'LAK', 'LBP', 'LKR',
-    'LRD', 'LSL', 'LVL', 'LYD', 'MAD', 'MDL', 'MGA', 'MKD', 'MMK', 'MNT',
-    'MOP', 'MRO', 'MUR', 'MVR', 'MWK', 'MXN', 'MYR', 'MZN', 'NAD', 'NGN',
-    'NIO', 'NOK', 'NPR', 'NZD', 'OMR', 'PAB', 'PEN', 'PGK', 'PHP', 'PKR',
-    'PLN', 'PYG', 'QAR', 'RON', 'RSD', 'RUB', 'RWF', 'SAR', 'SBD', 'SCR',
-    'SDG', 'SEK', 'SGD', 'SHP', 'SLL', 'SOS', 'SRD', 'STD', 'SYP', 'SZL',
-    'THB', 'TJS', 'TMT', 'TND', 'TOP', 'TRY', 'TTD', 'TWD', 'TZS', 'UAH',
-    'UGX', 'USD', 'UYU', 'UZS', 'VEF', 'VND', 'VUV', 'WST', 'XAF', 'XCD',
-    'XDR', 'XOF', 'XPF', 'YER', 'ZAR', 'ZMW'
-  ];
+  var BENCHMARK_CODES = ['USD', 'EUR', 'GBP', 'JPY', 'CHF', 'CAD', 'NGN', 'PHP'];
 
+  var CURRENCY_NAMES = {
+    AED: 'UAE Dirham',
+    AFN: 'Afghan Afghani',
+    ALL: 'Albanian Lek',
+    AMD: 'Armenian Dram',
+    ANG: 'Netherlands Antillean Guilder',
+    AOA: 'Angolan Kwanza',
+    ARS: 'Argentine Peso',
+    AUD: 'Australian Dollar',
+    AWG: 'Aruban Florin',
+    AZN: 'Azerbaijani Manat',
+    BAM: 'Bosnia-Herzegovina Mark',
+    BBD: 'Barbadian Dollar',
+    BDT: 'Bangladeshi Taka',
+    BGN: 'Bulgarian Lev',
+    BHD: 'Bahraini Dinar',
+    BIF: 'Burundian Franc',
+    BND: 'Brunei Dollar',
+    BOB: 'Bolivian Boliviano',
+    BRL: 'Brazilian Real',
+    BSD: 'Bahamian Dollar',
+    BTC: 'Bitcoin',
+    BTN: 'Bhutanese Ngultrum',
+    BWP: 'Botswanan Pula',
+    BYN: 'Belarusian Ruble',
+    BYR: 'Belarusian Ruble (2000–2016)',
+    BZD: 'Belize Dollar',
+    CAD: 'Canadian Dollar',
+    CDF: 'Congolese Franc',
+    CHF: 'Swiss Franc',
+    CLP: 'Chilean Peso',
+    CNY: 'Chinese Yuan',
+    COP: 'Colombian Peso',
+    CRC: 'Costa Rican Colón',
+    CUP: 'Cuban Peso',
+    CVE: 'Cape Verdean Escudo',
+    CZK: 'Czech Koruna',
+    DJF: 'Djiboutian Franc',
+    DKK: 'Danish Krone',
+    DOP: 'Dominican Peso',
+    DZD: 'Algerian Dinar',
+    EGP: 'Egyptian Pound',
+    ERN: 'Eritrean Nakfa',
+    ETB: 'Ethiopian Birr',
+    EUR: 'Euro',
+    FJD: 'Fijian Dollar',
+    FKP: 'Falkland Islands Pound',
+    GBP: 'British Pound Sterling',
+    GEL: 'Georgian Lari',
+    GHS: 'Ghanaian Cedi',
+    GIP: 'Gibraltar Pound',
+    GMD: 'Gambian Dalasi',
+    GNF: 'Guinean Franc',
+    GTQ: 'Guatemalan Quetzal',
+    GYD: 'Guyanaese Dollar',
+    HKD: 'Hong Kong Dollar',
+    HNL: 'Honduran Lempira',
+    HRK: 'Croatian Kuna',
+    HTG: 'Haitian Gourde',
+    HUF: 'Hungarian Forint',
+    IDR: 'Indonesian Rupiah',
+    ILS: 'Israeli New Shekel',
+    INR: 'Indian Rupee',
+    IQD: 'Iraqi Dinar',
+    IRR: 'Iranian Rial',
+    ISK: 'Icelandic Króna',
+    JMD: 'Jamaican Dollar',
+    JOD: 'Jordanian Dinar',
+    JPY: 'Japanese Yen',
+    KES: 'Kenyan Shilling',
+    KGS: 'Kyrgystani Som',
+    KHR: 'Cambodian Riel',
+    KMF: 'Comorian Franc',
+    KPW: 'North Korean Won',
+    KRW: 'South Korean Won',
+    KWD: 'Kuwaiti Dinar',
+    KYD: 'Cayman Islands Dollar',
+    KZT: 'Kazakhstani Tenge',
+    LAK: 'Laotian Kip',
+    LBP: 'Lebanese Pound',
+    LKR: 'Sri Lankan Rupee',
+    LRD: 'Liberian Dollar',
+    LSL: 'Lesotho Loti',
+    LVL: 'Latvian Lats',
+    LYD: 'Libyan Dinar',
+    MAD: 'Moroccan Dirham',
+    MDL: 'Moldovan Leu',
+    MGA: 'Malagasy Ariary',
+    MKD: 'Macedonian Denar',
+    MMK: 'Myanmar Kyat',
+    MNT: 'Mongolian Tugrik',
+    MOP: 'Macanese Pataca',
+    MRO: 'Mauritanian Ouguiya',
+    MUR: 'Mauritian Rupee',
+    MVR: 'Maldivian Rufiyaa',
+    MWK: 'Malawian Kwacha',
+    MXN: 'Mexican Peso',
+    MYR: 'Malaysian Ringgit',
+    MZN: 'Mozambican Metical',
+    NAD: 'Namibian Dollar',
+    NGN: 'Nigerian Naira',
+    NIO: 'Nicaraguan Córdoba',
+    NOK: 'Norwegian Krone',
+    NPR: 'Nepalese Rupee',
+    NZD: 'New Zealand Dollar',
+    OMR: 'Omani Rial',
+    PAB: 'Panamanian Balboa',
+    PEN: 'Peruvian Sol',
+    PGK: 'Papua New Guinean Kina',
+    PHP: 'Philippine Peso',
+    PKR: 'Pakistani Rupee',
+    PLN: 'Polish Złoty',
+    PYG: 'Paraguayan Guarani',
+    QAR: 'Qatari Riyal',
+    RON: 'Romanian Leu',
+    RSD: 'Serbian Dinar',
+    RUB: 'Russian Ruble',
+    RWF: 'Rwandan Franc',
+    SAR: 'Saudi Riyal',
+    SBD: 'Solomon Islands Dollar',
+    SCR: 'Seychellois Rupee',
+    SDG: 'Sudanese Pound',
+    SEK: 'Swedish Krona',
+    SGD: 'Singapore Dollar',
+    SHP: 'Saint Helena Pound',
+    SLL: 'Sierra Leonean Leone',
+    SOS: 'Somali Shilling',
+    SRD: 'Surinamese Dollar',
+    STD: 'São Tomé & Príncipe Dobra',
+    SYP: 'Syrian Pound',
+    SZL: 'Swazi Lilangeni',
+    THB: 'Thai Baht',
+    TJS: 'Tajikistani Somoni',
+    TMT: 'Turkmenistani Manat',
+    TND: 'Tunisian Dinar',
+    TOP: 'Tongan Paʻanga',
+    TRY: 'Turkish Lira',
+    TTD: 'Trinidad & Tobago Dollar',
+    TWD: 'New Taiwan Dollar',
+    TZS: 'Tanzanian Shilling',
+    UAH: 'Ukrainian Hryvnia',
+    UGX: 'Ugandan Shilling',
+    USD: 'US Dollar',
+    UYU: 'Uruguayan Peso',
+    UZS: 'Uzbekistani Som',
+    VEF: 'Venezuelan Bolívar',
+    VND: 'Vietnamese Đồng',
+    VUV: 'Vanuatu Vatu',
+    WST: 'Samoan Tala',
+    XAF: 'Central African CFA Franc',
+    XCD: 'East Caribbean Dollar',
+    XDR: 'Special Drawing Rights',
+    XOF: 'West African CFA Franc',
+    XPF: 'CFP Franc',
+    YER: 'Yemeni Rial',
+    ZAR: 'South African Rand',
+    ZMW: 'Zambian Kwacha'
+  };
+
+  var CURRENCY_CODES = Object.keys(CURRENCY_NAMES);
   var inMemoryCache = {};
   var inflightByBase = {};
 
@@ -39,9 +182,10 @@
     var fragment = document.createDocumentFragment();
     for (var i = 0; i < CURRENCY_CODES.length; i += 1) {
       var code = CURRENCY_CODES[i];
+      var name = CURRENCY_NAMES[code];
       var option = document.createElement('option');
       option.value = code;
-      option.textContent = code;
+      option.textContent = name ? code + ' — ' + name : code;
       if (code === selectedCode) {
         option.selected = true;
       }
@@ -69,18 +213,18 @@
     }
   }
 
-  function getCachedRates(baseCurrency) {
+  function getCachedEntry(baseCurrency) {
     var now = Date.now();
     var memoryEntry = inMemoryCache[baseCurrency];
     if (memoryEntry && now - memoryEntry.timestamp < CACHE_TTL_MS) {
-      return memoryEntry.rates;
+      return memoryEntry;
     }
 
     var storedCache = readStoredCache();
     var storedEntry = storedCache[baseCurrency];
     if (storedEntry && now - storedEntry.timestamp < CACHE_TTL_MS) {
       inMemoryCache[baseCurrency] = storedEntry;
-      return storedEntry.rates;
+      return storedEntry;
     }
 
     return null;
@@ -96,6 +240,7 @@
     var storedCache = readStoredCache();
     storedCache[baseCurrency] = cacheEntry;
     writeStoredCache(storedCache);
+    return cacheEntry;
   }
 
   async function fetchRatesFromOpenErApi(baseCurrency) {
@@ -123,16 +268,15 @@
       throw new Error('Fallback API returned an unexpected payload');
     }
 
-    // Frankfurter does not include base currency in the rates object.
     data.rates[baseCurrency] = 1;
     return data.rates;
   }
 
-  async function getRates(baseCurrency, forceRefresh) {
+  async function getRatesEntry(baseCurrency, forceRefresh) {
     if (!forceRefresh) {
-      var cachedRates = getCachedRates(baseCurrency);
-      if (cachedRates) {
-        return cachedRates;
+      var cachedEntry = getCachedEntry(baseCurrency);
+      if (cachedEntry) {
+        return cachedEntry;
       }
     }
 
@@ -149,8 +293,7 @@
           rates = await fetchRatesFromFrankfurter(baseCurrency);
         }
 
-        cacheRates(baseCurrency, rates);
-        return rates;
+        return cacheRates(baseCurrency, rates);
       } finally {
         delete inflightByBase[baseCurrency];
       }
@@ -189,30 +332,136 @@
     }
   }
 
+  function formatRateNumber(rateValue) {
+    if (!Number.isFinite(rateValue)) {
+      return '—';
+    }
+    var digits = rateValue < 0.1 ? 6 : rateValue < 10 ? 4 : 2;
+    return new Intl.NumberFormat(undefined, {
+      minimumFractionDigits: digits,
+      maximumFractionDigits: digits
+    }).format(rateValue);
+  }
+
   function setButtonLoading(buttonElement, isLoading) {
     if (!buttonElement) {
       return;
     }
 
+    var labelSpan = buttonElement.querySelector('.btn-label');
+    var target = labelSpan || buttonElement;
+
     if (isLoading) {
       buttonElement.disabled = true;
-      buttonElement.dataset.originalText = buttonElement.textContent;
-      buttonElement.textContent = 'Converting...';
+      buttonElement.dataset.originalText = target.textContent;
+      target.textContent = 'Syncing Rates…';
       return;
     }
 
     buttonElement.disabled = false;
-    buttonElement.textContent = buttonElement.dataset.originalText || 'Convert';
+    target.textContent = buttonElement.dataset.originalText || 'Convert Now';
   }
 
-  function setStatusText(statusElement, message, isError) {
-    if (!statusElement) {
+  function setStatusState(statusElement, stateDot, message, stateType) {
+    if (statusElement) {
+      statusElement.textContent = message || '';
+      statusElement.dataset.state = stateType || 'idle';
+    }
+    if (stateDot) {
+      stateDot.dataset.state = stateType || 'idle';
+    }
+  }
+
+  function updateRateBreakdown(fromCode, toCode, rate, timestamp) {
+    var unitRateEl = getElement('unit-rate');
+    var inverseRateEl = getElement('inverse-rate');
+    var updatedEl = getElement('rate-updated');
+    var resultCodeEl = getElement('result-currency-badge');
+
+    if (resultCodeEl) {
+      resultCodeEl.textContent = toCode;
+    }
+
+    if (unitRateEl) {
+      unitRateEl.textContent = '1 ' + fromCode + ' = ' + formatRateNumber(rate) + ' ' + toCode;
+    }
+
+    if (inverseRateEl) {
+      var inverse = rate > 0 ? 1 / rate : 0;
+      inverseRateEl.textContent = '1 ' + toCode + ' = ' + formatRateNumber(inverse) + ' ' + fromCode;
+    }
+
+    if (updatedEl && timestamp) {
+      var timeStr = new Date(timestamp).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      updatedEl.textContent = 'Cached ' + timeStr;
+    }
+  }
+
+  function renderCrossRates(baseCurrency, activeTarget, rates) {
+    var container = getElement('cross-rates-body');
+    var baseLabel = getElement('cross-base-code');
+    if (baseLabel) {
+      baseLabel.textContent = baseCurrency;
+    }
+    if (!container || !rates) {
       return;
     }
 
-    statusElement.textContent = message || '';
-    statusElement.classList.toggle('text-danger', !!isError);
-    statusElement.classList.toggle('text-muted', !isError);
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < BENCHMARK_CODES.length; i += 1) {
+      var code = BENCHMARK_CODES[i];
+      if (code === baseCurrency || typeof rates[code] !== 'number') {
+        continue;
+      }
+
+      var row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'cross-rate-item' + (code === activeTarget ? ' is-active' : '');
+      row.dataset.targetCode = code;
+      row.setAttribute('aria-label', 'Convert ' + baseCurrency + ' to ' + code);
+
+      var pairSpan = document.createElement('span');
+      pairSpan.className = 'cross-pair';
+      var codeStrong = document.createElement('strong');
+      codeStrong.textContent = code;
+      var nameSmall = document.createElement('small');
+      nameSmall.textContent = CURRENCY_NAMES[code] || '';
+      pairSpan.appendChild(codeStrong);
+      pairSpan.appendChild(nameSmall);
+
+      var valueSpan = document.createElement('span');
+      valueSpan.className = 'cross-value';
+      valueSpan.textContent = formatRateNumber(rates[code]);
+
+      row.appendChild(pairSpan);
+      row.appendChild(valueSpan);
+      fragment.appendChild(row);
+    }
+
+    container.textContent = '';
+    container.appendChild(fragment);
+  }
+
+  function syncActivePills(amountValue, fromCode, toCode) {
+    var amountButtons = document.querySelectorAll('[data-amount]');
+    for (var i = 0; i < amountButtons.length; i += 1) {
+      var btn = amountButtons[i];
+      var isMatch = Number(btn.dataset.amount) === amountValue;
+      btn.classList.toggle('is-active', isMatch);
+      btn.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+    }
+
+    var pairButtons = document.querySelectorAll('[data-pair]');
+    var currentPair = fromCode + '-' + toCode;
+    for (var j = 0; j < pairButtons.length; j += 1) {
+      var pairBtn = pairButtons[j];
+      var isPairMatch = pairBtn.dataset.pair === currentPair;
+      pairBtn.classList.toggle('is-active', isPairMatch);
+      pairBtn.setAttribute('aria-pressed', isPairMatch ? 'true' : 'false');
+    }
   }
 
   async function convertCurrency(forceRefresh) {
@@ -221,6 +470,7 @@
     var amountElement = getElement('amount');
     var resultElement = getElement('result');
     var statusElement = getElement('status-message');
+    var stateDot = getElement('status-dot');
     var buttonElement = getElement('convert-btn');
 
     if (!fromElement || !toElement || !amountElement || !resultElement) {
@@ -231,23 +481,27 @@
     var toCurrency = toElement.value;
     var amount = parseAmount(amountElement.value);
 
+    syncActivePills(amount, fromCurrency, toCurrency);
+
     if (amount === null) {
       resultElement.value = '';
-      setStatusText(statusElement, 'Enter a valid amount (0 or more).', true);
+      setStatusState(statusElement, stateDot, 'Enter a valid amount (0 or more).', 'error');
       return;
     }
 
     if (fromCurrency === toCurrency) {
       resultElement.value = formatAmount(amount, toCurrency);
-      setStatusText(statusElement, 'No conversion needed for the same currency.', false);
+      updateRateBreakdown(fromCurrency, toCurrency, 1, Date.now());
+      setStatusState(statusElement, stateDot, 'Identical currency selected (1:1 parity).', 'ok');
       return;
     }
 
     setButtonLoading(buttonElement, true);
-    setStatusText(statusElement, 'Fetching latest rates...', false);
+    setStatusState(statusElement, stateDot, 'Fetching live mid-market rate…', 'loading');
 
     try {
-      var rates = await getRates(fromCurrency, !!forceRefresh);
+      var entry = await getRatesEntry(fromCurrency, !!forceRefresh);
+      var rates = entry.rates;
       var rate = rates[toCurrency];
 
       if (typeof rate !== 'number') {
@@ -256,10 +510,12 @@
 
       var convertedAmount = amount * rate;
       resultElement.value = formatAmount(convertedAmount, toCurrency);
-      setStatusText(statusElement, 'Rate updated successfully.', false);
+      updateRateBreakdown(fromCurrency, toCurrency, rate, entry.timestamp);
+      renderCrossRates(fromCurrency, toCurrency, rates);
+      setStatusState(statusElement, stateDot, 'Live mid-market rate active.', 'ok');
     } catch (error) {
       resultElement.value = '';
-      setStatusText(statusElement, 'Unable to fetch live rates. Check your connection and try again.', true);
+      setStatusState(statusElement, stateDot, 'Unable to reach rate feed. Check connection and retry.', 'error');
     } finally {
       setButtonLoading(buttonElement, false);
     }
@@ -290,10 +546,13 @@
   }
 
   function setupEventHandlers() {
+    var formElement = getElement('converter-form');
     var amountElement = getElement('amount');
     var fromElement = getElement('from');
     var toElement = getElement('to');
     var buttonElement = getElement('convert-btn');
+    var swapButton = getElement('swap-btn');
+    var crossRatesBody = getElement('cross-rates-body');
 
     if (!amountElement || !fromElement || !toElement || !buttonElement) {
       return;
@@ -304,11 +563,23 @@
 
     var debouncedConvert = debounce(function () {
       convertCurrency(false);
-    }, 300);
+    }, 250);
 
-    buttonElement.addEventListener('click', function () {
+    if (formElement) {
+      formElement.addEventListener('submit', function (event) {
+        event.preventDefault();
+        convertCurrency(true);
+      });
+    }
+
+    buttonElement.addEventListener('click', function (event) {
+      if (formElement && buttonElement.type === 'submit') {
+        return;
+      }
+      event.preventDefault();
       convertCurrency(false);
     });
+
     amountElement.addEventListener('input', debouncedConvert);
     fromElement.addEventListener('change', function () {
       convertCurrency(false);
@@ -316,6 +587,51 @@
     toElement.addEventListener('change', function () {
       convertCurrency(false);
     });
+
+    if (swapButton) {
+      swapButton.addEventListener('click', function () {
+        var currentFrom = fromElement.value;
+        fromElement.value = toElement.value;
+        toElement.value = currentFrom;
+        swapButton.classList.remove('is-spinning');
+        void swapButton.offsetWidth;
+        swapButton.classList.add('is-spinning');
+        convertCurrency(false);
+      });
+    }
+
+    var amountPresets = document.querySelectorAll('[data-amount]');
+    for (var i = 0; i < amountPresets.length; i += 1) {
+      amountPresets[i].addEventListener('click', function (event) {
+        var preset = event.currentTarget.dataset.amount;
+        if (preset) {
+          amountElement.value = preset;
+          convertCurrency(false);
+        }
+      });
+    }
+
+    var pairShortcuts = document.querySelectorAll('[data-pair]');
+    for (var j = 0; j < pairShortcuts.length; j += 1) {
+      pairShortcuts[j].addEventListener('click', function (event) {
+        var pair = (event.currentTarget.dataset.pair || '').split('-');
+        if (pair.length === 2) {
+          fromElement.value = pair[0];
+          toElement.value = pair[1];
+          convertCurrency(false);
+        }
+      });
+    }
+
+    if (crossRatesBody) {
+      crossRatesBody.addEventListener('click', function (event) {
+        var button = event.target.closest('[data-target-code]');
+        if (button && button.dataset.targetCode) {
+          toElement.value = button.dataset.targetCode;
+          convertCurrency(false);
+        }
+      });
+    }
   }
 
   function init() {
