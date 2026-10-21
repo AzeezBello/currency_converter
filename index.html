@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CurrencyConverter.io - Live Currency Converter">
+    <meta name="author" content="azeez@scholarx.co">
+    <title>Currency Converter</title>
+    <link rel="shortcut icon" href="public/favicon.png">
+    <link rel="preload" as="image" href="public/img/bg-masthead.jpg" fetchpriority="high">
+    <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/landing-page.css" rel="stylesheet">
+    <link href="public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><strong>CurrencyConverter.io</strong></a>
+      </div>
+    </nav>
+
+    <main>
+      <header class="masthead text-white text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-lg-6 mx-auto">
+              <div class="card">
+                <div class="card-header">
+                  <div class="nav nav-pills card-header-pills">
+                    <span class="nav-link active">Calculator</span>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="text-black-50 col-12">
+                    <label for="amount" class="mb-1"><strong>Amount:</strong></label>
+                    <input type="number" value="1" min="0" step="any" inputmode="decimal" name="amount" id="amount" placeholder="Enter amount" class="form-control form-control-lg">
+                  </div>
+
+                  <div class="special clearfix">
+                    <div class="text-black-50 col-12 col-md-5 float-left">
+                      <label for="from" class="mb-1"><strong>Currency From</strong></label>
+                      <select id="from" class="form-control form-control-lg">
+                        <option value="USD" selected>USD</option>
+                      </select>
+                    </div>
+                    <div class="text-black-50 col-12 col-md-5 float-lg-right">
+                      <label for="to" class="mb-1"><strong>to</strong></label>
+                      <select id="to" class="form-control form-control-lg">
+                        <option value="PHP" selected>PHP</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="special">
+                    <label for="result" class="sr-only">Converted Amount</label>
+                    <input type="text" id="result" readonly placeholder="Press Convert button" class="form-control form-control-lg">
+                    <small id="status-message" class="form-text text-muted mt-2" aria-live="polite"></small>
+                  </div>
+
+                  <div class="special">
+                    <button type="button" id="convert-btn" class="btn btn-block btn-lg btn-primary postfix">Convert</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </main>
+
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item"><a href="#">About</a></li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item"><a href="#">Contact</a></li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; Currency Converter 2018. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="#" aria-label="Facebook">
+                  <i class="fa fa-facebook fa-2x fa-fw" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="#" aria-label="Twitter">
+                  <i class="fa fa-twitter fa-2x fa-fw" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" aria-label="Instagram">
+                  <i class="fa fa-instagram fa-2x fa-fw" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="public/js/currency-converter.js" defer></script>
+  </body>
+</html>

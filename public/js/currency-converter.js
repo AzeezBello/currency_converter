@@ -3,11 +3,53 @@
 
   var CACHE_TTL_MS = 30 * 60 * 1000;
   var STORAGE_KEY = 'currency-converter-rates-v1';
+  var DEFAULT_FROM = 'USD';
+  var DEFAULT_TO = 'PHP';
+  var CURRENCY_CODES = [
+    'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AUD', 'AWG', 'AZN',
+    'BAM', 'BBD', 'BDT', 'BGN', 'BHD', 'BIF', 'BND', 'BOB', 'BRL', 'BSD',
+    'BTC', 'BTN', 'BWP', 'BYN', 'BYR', 'BZD', 'CAD', 'CDF', 'CHF', 'CLP',
+    'CNY', 'COP', 'CRC', 'CUP', 'CVE', 'CZK', 'DJF', 'DKK', 'DOP', 'DZD',
+    'EGP', 'ERN', 'ETB', 'EUR', 'FJD', 'FKP', 'GBP', 'GEL', 'GHS', 'GIP',
+    'GMD', 'GNF', 'GTQ', 'GYD', 'HKD', 'HNL', 'HRK', 'HTG', 'HUF', 'IDR',
+    'ILS', 'INR', 'IQD', 'IRR', 'ISK', 'JMD', 'JOD', 'JPY', 'KES', 'KGS',
+    'KHR', 'KMF', 'KPW', 'KRW', 'KWD', 'KYD', 'KZT', 'LAK', 'LBP', 'LKR',
+    'LRD', 'LSL', 'LVL', 'LYD', 'MAD', 'MDL', 'MGA', 'MKD', 'MMK', 'MNT',
+    'MOP', 'MRO', 'MUR', 'MVR', 'MWK', 'MXN', 'MYR', 'MZN', 'NAD', 'NGN',
+    'NIO', 'NOK', 'NPR', 'NZD', 'OMR', 'PAB', 'PEN', 'PGK', 'PHP', 'PKR',
+    'PLN', 'PYG', 'QAR', 'RON', 'RSD', 'RUB', 'RWF', 'SAR', 'SBD', 'SCR',
+    'SDG', 'SEK', 'SGD', 'SHP', 'SLL', 'SOS', 'SRD', 'STD', 'SYP', 'SZL',
+    'THB', 'TJS', 'TMT', 'TND', 'TOP', 'TRY', 'TTD', 'TWD', 'TZS', 'UAH',
+    'UGX', 'USD', 'UYU', 'UZS', 'VEF', 'VND', 'VUV', 'WST', 'XAF', 'XCD',
+    'XDR', 'XOF', 'XPF', 'YER', 'ZAR', 'ZMW'
+  ];
+
   var inMemoryCache = {};
   var inflightByBase = {};
 
   function getElement(id) {
     return document.getElementById(id);
+  }
+
+  function populateSelectOptions(selectElement, selectedCode) {
+    if (!selectElement) {
+      return;
+    }
+
+    var fragment = document.createDocumentFragment();
+    for (var i = 0; i < CURRENCY_CODES.length; i += 1) {
+      var code = CURRENCY_CODES[i];
+      var option = document.createElement('option');
+      option.value = code;
+      option.textContent = code;
+      if (code === selectedCode) {
+        option.selected = true;
+      }
+      fragment.appendChild(option);
+    }
+
+    selectElement.textContent = '';
+    selectElement.appendChild(fragment);
   }
 
   function readStoredCache() {
@@ -169,7 +211,8 @@
     }
 
     statusElement.textContent = message || '';
-    statusElement.style.color = isError ? '#dc3545' : '#6c757d';
+    statusElement.classList.toggle('text-danger', !!isError);
+    statusElement.classList.toggle('text-muted', !isError);
   }
 
   async function convertCurrency(forceRefresh) {
@@ -255,6 +298,9 @@
     if (!amountElement || !fromElement || !toElement || !buttonElement) {
       return;
     }
+
+    populateSelectOptions(fromElement, fromElement.value || DEFAULT_FROM);
+    populateSelectOptions(toElement, toElement.value || DEFAULT_TO);
 
     var debouncedConvert = debounce(function () {
       convertCurrency(false);

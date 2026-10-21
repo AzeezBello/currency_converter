@@ -1,756 +1,112 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="CurrencyConverter.io">
-        <meta name="author" content="azeez@scholarx.co">
-        <title>
-            Currency Converter
-        </title>
-        <link rel="shortcut icon" href="favicon.png">
-      
-    <!-- Bootstrap core CSS -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CurrencyConverter.io - Live Currency Converter">
+    <meta name="author" content="azeez@scholarx.co">
+    <title>Currency Converter</title>
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="preload" as="image" href="img/bg-masthead.jpg" fetchpriority="high">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/landing-page.css">
+    <link href="css/landing-page.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="#"><strong>CurrencyConverter.io</strong></a>
+      </div>
+    </nav>
 
-    <!-- Custom fonts for this template -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-      
-    </head>
-    <body>
-     <!-- Navigation -->
-     <nav class="navbar navbar-light bg-light static-top">
+    <main>
+      <header class="masthead text-white text-center">
         <div class="container">
-          <a class="navbar-brand" href="#"><strong>CurrencyConverter.io</strong></a>
-        </div>
-      </nav>    
-
-      <!-- Masthead -->
-    <header class="masthead text-white text-center">
-        <div class="row ">
-            <div class="col-sm-6 mx-auto">
+          <div class="row">
+            <div class="col-sm-8 col-lg-6 mx-auto">
               <div class="card">
-                  <div class="card-header">
-                      <div class="nav nav-pills card-header-pills">
-                          <a class="nav-link active" href="#">Calculator</a>
-                      </div>
-                    </div>
-                <div class="card-body">
-                       <div>
-                          <div class="text-black-50 col-12 col-md-12 "><strong>Amount:</strong>
-                        <input type="number" value="1" min="0" step="any" inputmode="decimal" name="amount" id="amount" placeholder="Enter amount" class="form-control form-control-lg"/>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="special"></div>
-                        <div class="text-black-50 col-12 col-md-5 float-left " ><strong>Currency From</strong>
-                          <select id="from" class="form-control form-control-lg" >
-                              <option value="AED" >AED</option>
-                          
-                              <option value="AFN" >AFN</option>
-                              
-                              <option value="ALL" >ALL</option>
-                              
-                              <option value="AMD" >AMD</option>
-                              
-                              <option value="ANG" >ANG</option>
-                              
-                              <option value="AOA" >AOA</option>
-                              
-                              <option value="ARS" >ARS</option>
-                              
-                              <option value="AUD" >AUD</option>
-                              
-                              <option value="AWG" >AWG</option>
-                              
-                              <option value="AZN" >AZN</option>
-                              
-                              <option value="BAM" >BAM</option>
-                              
-                              <option value="BBD" >BBD</option>
-                              
-                              <option value="BDT" >BDT</option>
-                              
-                              <option value="BGN" >BGN</option>
-                              
-                              <option value="BHD" >BHD</option>
-                              
-                              <option value="BIF" >BIF</option>
-                              
-                              <option value="BND" >BND</option>
-                              
-                              <option value="BOB" >BOB</option>
-                              
-                              <option value="BRL" >BRL</option>
-                              
-                              <option value="BSD" >BSD</option>
-                              
-                              <option value="BTC" >BTC</option>
-                              
-                              <option value="BTN" >BTN</option>
-                              
-                              <option value="BWP" >BWP</option>
-                              
-                              <option value="BYN" >BYN</option>
-                              
-                              <option value="BYR" >BYR</option>
-                              
-                              <option value="BZD" >BZD</option>
-                              
-                              <option value="CAD" >CAD</option>
-                              
-                              <option value="CDF" >CDF</option>
-                              
-                              <option value="CHF" >CHF</option>
-                              
-                              <option value="CLP" >CLP</option>
-                              
-                              <option value="CNY" >CNY</option>
-                              
-                              <option value="COP" >COP</option>
-                              
-                              <option value="CRC" >CRC</option>
-                              
-                              <option value="CUP" >CUP</option>
-                              
-                              <option value="CVE" >CVE</option>
-                              
-                              <option value="CZK" >CZK</option>
-                              
-                              <option value="DJF" >DJF</option>
-                              
-                              <option value="DKK" >DKK</option>
-                              
-                              <option value="DOP" >DOP</option>
-                              
-                              <option value="DZD" >DZD</option>
-                              
-                              <option value="EGP" >EGP</option>
-                              
-                              <option value="ERN" >ERN</option>
-                              
-                              <option value="ETB" >ETB</option>
-                              
-                              <option value="EUR" >EUR</option>
-                              
-                              <option value="FJD" >FJD</option>
-                              
-                              <option value="FKP" >FKP</option>
-                              
-                              <option value="GBP" >GBP</option>
-                              
-                              <option value="GEL" >GEL</option>
-                              
-                              <option value="GHS" >GHS</option>
-                              
-                              <option value="GIP" >GIP</option>
-                              
-                              <option value="GMD" >GMD</option>
-                              
-                              <option value="GNF" >GNF</option>
-                              
-                              <option value="GTQ" >GTQ</option>
-                              
-                              <option value="GYD" >GYD</option>
-                              
-                              <option value="HKD" >HKD</option>
-                              
-                              <option value="HNL" >HNL</option>
-                              
-                              <option value="HRK" >HRK</option>
-                              
-                              <option value="HTG" >HTG</option>
-                              
-                              <option value="HUF" >HUF</option>
-                              
-                              <option value="IDR" >IDR</option>
-                              
-                              <option value="ILS" >ILS</option>
-                              
-                              <option value="INR" >INR</option>
-                              
-                              <option value="IQD" >IQD</option>
-                              
-                              <option value="IRR" >IRR</option>
-                              
-                              <option value="ISK" >ISK</option>
-                              
-                              <option value="JMD" >JMD</option>
-                              
-                              <option value="JOD" >JOD</option>
-                              
-                              <option value="JPY" >JPY</option>
-                              
-                              <option value="KES" >KES</option>
-                              
-                              <option value="KGS" >KGS</option>
-                              
-                              <option value="KHR" >KHR</option>
-                              
-                              <option value="KMF" >KMF</option>
-                              
-                              <option value="KPW" >KPW</option>
-                              
-                              <option value="KRW" >KRW</option>
-                              
-                              <option value="KWD" >KWD</option>
-                              
-                              <option value="KYD" >KYD</option>
-                              
-                              <option value="KZT" >KZT</option>
-                              
-                              <option value="LAK" >LAK</option>
-                              
-                              <option value="LBP" >LBP</option>
-                              
-                              <option value="LKR" >LKR</option>
-                              
-                              <option value="LRD" >LRD</option>
-                              
-                              <option value="LSL" >LSL</option>
-                              
-                              <option value="LVL" >LVL</option>
-                              
-                              <option value="LYD" >LYD</option>
-                              
-                              <option value="MAD" >MAD</option>
-                              
-                              <option value="MDL" >MDL</option>
-                              
-                              <option value="MGA" >MGA</option>
-                              
-                              <option value="MKD" >MKD</option>
-                              
-                              <option value="MMK" >MMK</option>
-                              
-                              <option value="MNT" >MNT</option>
-                              
-                              <option value="MOP" >MOP</option>
-                              
-                              <option value="MRO" >MRO</option>
-                              
-                              <option value="MUR" >MUR</option>
-                              
-                              <option value="MVR" >MVR</option>
-                              
-                              <option value="MWK" >MWK</option>
-                              
-                              <option value="MXN" >MXN</option>
-                              
-                              <option value="MYR" >MYR</option>
-                              
-                              <option value="MZN" >MZN</option>
-                              
-                              <option value="NAD" >NAD</option>
-                              
-                              <option value="NGN" >NGN</option>
-                              
-                              <option value="NIO" >NIO</option>
-                              
-                              <option value="NOK" >NOK</option>
-                              
-                              <option value="NPR" >NPR</option>
-                              
-                              <option value="NZD" >NZD</option>
-                              
-                              <option value="OMR" >OMR</option>
-                              
-                              <option value="PAB" >PAB</option>
-                              
-                              <option value="PEN" >PEN</option>
-                              
-                              <option value="PGK" >PGK</option>
-                              
-                              <option value="PHP" >PHP</option>
-                              
-                              <option value="PKR" >PKR</option>
-                              
-                              <option value="PLN" >PLN</option>
-                              
-                              <option value="PYG" >PYG</option>
-                              
-                              <option value="QAR" >QAR</option>
-                              
-                              <option value="RON" >RON</option>
-                              
-                              <option value="RSD" >RSD</option>
-                              
-                              <option value="RUB" >RUB</option>
-                              
-                              <option value="RWF" >RWF</option>
-                              
-                              <option value="SAR" >SAR</option>
-                              
-                              <option value="SBD" >SBD</option>
-                              
-                              <option value="SCR" >SCR</option>
-                              
-                              <option value="SDG" >SDG</option>
-                              
-                              <option value="SEK" >SEK</option>
-                              
-                              <option value="SGD" >SGD</option>
-                              
-                              <option value="SHP" >SHP</option>
-                              
-                              <option value="SLL" >SLL</option>
-                              
-                              <option value="SOS" >SOS</option>
-                              
-                              <option value="SRD" >SRD</option>
-                              
-                              <option value="STD" >STD</option>
-                              
-                              <option value="SYP" >SYP</option>
-                              
-                              <option value="SZL" >SZL</option>
-                              
-                              <option value="THB" >THB</option>
-                              
-                              <option value="TJS" >TJS</option>
-                              
-                              <option value="TMT" >TMT</option>
-                              
-                              <option value="TND" >TND</option>
-                              
-                              <option value="TOP" >TOP</option>
-                              
-                              <option value="TRY" >TRY</option>
-                              
-                              <option value="TTD" >TTD</option>
-                              
-                              <option value="TWD" >TWD</option>
-                              
-                              <option value="TZS" >TZS</option>
-                              
-                              <option value="UAH" >UAH</option>
-                              
-                              <option value="UGX" >UGX</option>
-                              
-                              <option value="USD" selected>USD</option>
-                              
-                              <option value="UYU" >UYU</option>
-                              
-                              <option value="UZS" >UZS</option>
-                              
-                              <option value="VEF" >VEF</option>
-                              
-                              <option value="VND" >VND</option>
-                              
-                              <option value="VUV" >VUV</option>
-                              
-                              <option value="WST" >WST</option>
-                              
-                              <option value="XAF" >XAF</option>
-                              
-                              <option value="XCD" >XCD</option>
-                              
-                              <option value="XDR" >XDR</option>
-                              
-                              <option value="XOF" >XOF</option>
-                              
-                              <option value="XPF" >XPF</option>
-                              
-                              <option value="YER" >YER</option>
-                              
-                              <option value="ZAR" >ZAR</option>
-                              
-                              <option value="ZMW" >ZMW</option>
-                          </select>
-                        </div>
-                        <div>
-                            
-                            <div class="text-black-50 col-12 col-md-5 float-lg-right "><strong>to</strong> 
-                          <select id="to"  class="form-control form-control-lg">
-                              <option value="AED" >AED</option>
-                            
-                              <option value="AFN" >AFN</option>
-                              
-                              <option value="ALL" >ALL</option>
-                              
-                              <option value="AMD" >AMD</option>
-                              
-                              <option value="ANG" >ANG</option>
-                              
-                              <option value="AOA" >AOA</option>
-                              
-                              <option value="ARS" >ARS</option>
-                              
-                              <option value="AUD" >AUD</option>
-                              
-                              <option value="AWG" >AWG</option>
-                              
-                              <option value="AZN" >AZN</option>
-                              
-                              <option value="BAM" >BAM</option>
-                              
-                              <option value="BBD" >BBD</option>
-                              
-                              <option value="BDT" >BDT</option>
-                              
-                              <option value="BGN" >BGN</option>
-                              
-                              <option value="BHD" >BHD</option>
-                              
-                              <option value="BIF" >BIF</option>
-                              
-                              <option value="BND" >BND</option>
-                              
-                              <option value="BOB" >BOB</option>
-                              
-                              <option value="BRL" >BRL</option>
-                              
-                              <option value="BSD" >BSD</option>
-                              
-                              <option value="BTC" >BTC</option>
-                              
-                              <option value="BTN" >BTN</option>
-                              
-                              <option value="BWP" >BWP</option>
-                              
-                              <option value="BYN" >BYN</option>
-                              
-                              <option value="BYR" >BYR</option>
-                              
-                              <option value="BZD" >BZD</option>
-                              
-                              <option value="CAD" >CAD</option>
-                              
-                              <option value="CDF" >CDF</option>
-                              
-                              <option value="CHF" >CHF</option>
-                              
-                              <option value="CLP" >CLP</option>
-                              
-                              <option value="CNY" >CNY</option>
-                              
-                              <option value="COP" >COP</option>
-                              
-                              <option value="CRC" >CRC</option>
-                              
-                              <option value="CUP" >CUP</option>
-                              
-                              <option value="CVE" >CVE</option>
-                              
-                              <option value="CZK" >CZK</option>
-                              
-                              <option value="DJF" >DJF</option>
-                              
-                              <option value="DKK" >DKK</option>
-                              
-                              <option value="DOP" >DOP</option>
-                              
-                              <option value="DZD" >DZD</option>
-                              
-                              <option value="EGP" >EGP</option>
-                              
-                              <option value="ERN" >ERN</option>
-                              
-                              <option value="ETB" >ETB</option>
-                              
-                              <option value="EUR" >EUR</option>
-                              
-                              <option value="FJD" >FJD</option>
-                              
-                              <option value="FKP" >FKP</option>
-                              
-                              <option value="GBP" >GBP</option>
-                              
-                              <option value="GEL" >GEL</option>
-                              
-                              <option value="GHS" >GHS</option>
-                              
-                              <option value="GIP" >GIP</option>
-                              
-                              <option value="GMD" >GMD</option>
-                              
-                              <option value="GNF" >GNF</option>
-                              
-                              <option value="GTQ" >GTQ</option>
-                              
-                              <option value="GYD" >GYD</option>
-                              
-                              <option value="HKD" >HKD</option>
-                              
-                              <option value="HNL" >HNL</option>
-                              
-                              <option value="HRK" >HRK</option>
-                              
-                              <option value="HTG" >HTG</option>
-                              
-                              <option value="HUF" >HUF</option>
-                              
-                              <option value="IDR" >IDR</option>
-                              
-                              <option value="ILS" >ILS</option>
-                              
-                              <option value="INR" >INR</option>
-                              
-                              <option value="IQD" >IQD</option>
-                              
-                              <option value="IRR" >IRR</option>
-                              
-                              <option value="ISK" >ISK</option>
-                              
-                              <option value="JMD" >JMD</option>
-                              
-                              <option value="JOD" >JOD</option>
-                              
-                              <option value="JPY" >JPY</option>
-                              
-                              <option value="KES" >KES</option>
-                              
-                              <option value="KGS" >KGS</option>
-                              
-                              <option value="KHR" >KHR</option>
-                              
-                              <option value="KMF" >KMF</option>
-                              
-                              <option value="KPW" >KPW</option>
-                              
-                              <option value="KRW" >KRW</option>
-                              
-                              <option value="KWD" >KWD</option>
-                              
-                              <option value="KYD" >KYD</option>
-                              
-                              <option value="KZT" >KZT</option>
-                              
-                              <option value="LAK" >LAK</option>
-                              
-                              <option value="LBP" >LBP</option>
-                              
-                              <option value="LKR" >LKR</option>
-                              
-                              <option value="LRD" >LRD</option>
-                              
-                              <option value="LSL" >LSL</option>
-                              
-                              <option value="LVL" >LVL</option>
-                              
-                              <option value="LYD" >LYD</option>
-                              
-                              <option value="MAD" >MAD</option>
-                              
-                              <option value="MDL" >MDL</option>
-                              
-                              <option value="MGA" >MGA</option>
-                              
-                              <option value="MKD" >MKD</option>
-                              
-                              <option value="MMK" >MMK</option>
-                              
-                              <option value="MNT" >MNT</option>
-                              
-                              <option value="MOP" >MOP</option>
-                              
-                              <option value="MRO" >MRO</option>
-                              
-                              <option value="MUR" >MUR</option>
-                              
-                              <option value="MVR" >MVR</option>
-                              
-                              <option value="MWK" >MWK</option>
-                              
-                              <option value="MXN" >MXN</option>
-                              
-                              <option value="MYR" >MYR</option>
-                              
-                              <option value="MZN" >MZN</option>
-                              
-                              <option value="NAD" >NAD</option>
-                              
-                              <option value="NGN" >NGN</option>
-                              
-                              <option value="NIO" >NIO</option>
-                              
-                              <option value="NOK" >NOK</option>
-                              
-                              <option value="NPR" >NPR</option>
-                              
-                              <option value="NZD" >NZD</option>
-                              
-                              <option value="OMR" >OMR</option>
-                              
-                              <option value="PAB" >PAB</option>
-                              
-                              <option value="PEN" >PEN</option>
-                              
-                              <option value="PGK" >PGK</option>
-                              
-                              <option value="PHP" selected>PHP</option>
-                              
-                              <option value="PKR" >PKR</option>
-                              
-                              <option value="PLN" >PLN</option>
-                              
-                              <option value="PYG" >PYG</option>
-                              
-                              <option value="QAR" >QAR</option>
-                              
-                              <option value="RON" >RON</option>
-                              
-                              <option value="RSD" >RSD</option>
-                              
-                              <option value="RUB" >RUB</option>
-                              
-                              <option value="RWF" >RWF</option>
-                              
-                              <option value="SAR" >SAR</option>
-                              
-                              <option value="SBD" >SBD</option>
-                              
-                              <option value="SCR" >SCR</option>
-                              
-                              <option value="SDG" >SDG</option>
-                              
-                              <option value="SEK" >SEK</option>
-                              
-                              <option value="SGD" >SGD</option>
-                              
-                              <option value="SHP" >SHP</option>
-                              
-                              <option value="SLL" >SLL</option>
-                              
-                              <option value="SOS" >SOS</option>
-                              
-                              <option value="SRD" >SRD</option>
-                              
-                              <option value="STD" >STD</option>
-                              
-                              <option value="SYP" >SYP</option>
-                              
-                              <option value="SZL" >SZL</option>
-                              
-                              <option value="THB" >THB</option>
-                              
-                              <option value="TJS" >TJS</option>
-                              
-                              <option value="TMT" >TMT</option>
-                              
-                              <option value="TND" >TND</option>
-                              
-                              <option value="TOP" >TOP</option>
-                              
-                              <option value="TRY" >TRY</option>
-                              
-                              <option value="TTD" >TTD</option>
-                              
-                              <option value="TWD" >TWD</option>
-                              
-                              <option value="TZS" >TZS</option>
-                              
-                              <option value="UAH" >UAH</option>
-                              
-                              <option value="UGX" >UGX</option>
-                              
-                              <option value="USD" >USD</option>
-                              
-                              <option value="UYU" >UYU</option>
-                              
-                              <option value="UZS" >UZS</option>
-                              
-                              <option value="VEF" >VEF</option>
-                              
-                              <option value="VND" >VND</option>
-                              
-                              <option value="VUV" >VUV</option>
-                              
-                              <option value="WST" >WST</option>
-                              
-                              <option value="XAF" >XAF</option>
-                              
-                              <option value="XCD" >XCD</option>
-                              
-                              <option value="XDR" >XDR</option>
-                              
-                              <option value="XOF" >XOF</option>
-                              
-                              <option value="XPF" >XPF</option>
-                              
-                              <option value="YER" >YER</option>
-                              
-                              <option value="ZAR" >ZAR</option>
-                              
-                              <option value="ZMW" >ZMW</option>
-                          </select>
-                        </div>
-                        
-                      </div>
-                    </div>
-               
-                  <div class="special">
-                    <input type="text" id="result" readonly placeholder="Press Convert button" class="form-control form-control-lg" />
-                    <small id="status-message" class="form-text text-muted mt-2"></small>
+                <div class="card-header">
+                  <div class="nav nav-pills card-header-pills">
+                    <span class="nav-link active">Calculator</span>
                   </div>
-                  <div class="special" >
+                </div>
+                <div class="card-body">
+                  <div class="text-black-50 col-12">
+                    <label for="amount" class="mb-1"><strong>Amount:</strong></label>
+                    <input type="number" value="1" min="0" step="any" inputmode="decimal" name="amount" id="amount" placeholder="Enter amount" class="form-control form-control-lg">
+                  </div>
+
+                  <div class="special clearfix">
+                    <div class="text-black-50 col-12 col-md-5 float-left">
+                      <label for="from" class="mb-1"><strong>Currency From</strong></label>
+                      <select id="from" class="form-control form-control-lg">
+                        <option value="USD" selected>USD</option>
+                      </select>
+                    </div>
+                    <div class="text-black-50 col-12 col-md-5 float-lg-right">
+                      <label for="to" class="mb-1"><strong>to</strong></label>
+                      <select id="to" class="form-control form-control-lg">
+                        <option value="PHP" selected>PHP</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="special">
+                    <label for="result" class="sr-only">Converted Amount</label>
+                    <input type="text" id="result" readonly placeholder="Press Convert button" class="form-control form-control-lg">
+                    <small id="status-message" class="form-text text-muted mt-2" aria-live="polite"></small>
+                  </div>
+
+                  <div class="special">
                     <button type="button" id="convert-btn" class="btn btn-block btn-lg btn-primary postfix">Convert</button>
                   </div>
                 </div>
-              
+              </div>
             </div>
           </div>
         </div>
-     
       </header>
+    </main>
 
-    
-      <!-- Footer -->
- <footer class="footer bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-          <ul class="list-inline mb-2">
-            <li class="list-inline-item">
-              <a href="#">About</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Contact</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
-            </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
-            </li>
-          </ul>
-          <p class="text-muted small mb-4 mb-lg-0">&copy; Currency Converter 2018. All Rights Reserved.</p>
-        </div>
-        <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item mr-3">
-              <a href="#">
-                <i class="fa fa-facebook fa-2x fa-fw"></i>
-              </a>
-            </li>
-            <li class="list-inline-item mr-3">
-              <a href="#">
-                <i class="fa fa-twitter fa-2x fa-fw"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <i class="fa fa-instagram fa-2x fa-fw"></i>
-              </a>
-            </li>
-          </ul>
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item"><a href="#">About</a></li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item"><a href="#">Contact</a></li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; Currency Converter 2018. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="#" aria-label="Facebook">
+                  <i class="fa fa-facebook fa-2x fa-fw" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="#" aria-label="Twitter">
+                  <i class="fa fa-twitter fa-2x fa-fw" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#" aria-label="Instagram">
+                  <i class="fa fa-instagram fa-2x fa-fw" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-    
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="js/currency-converter.js" defer></script>
-    </body>
+    <script src="js/currency-converter.js" defer></script>
+  </body>
 </html>

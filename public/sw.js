@@ -1,19 +1,12 @@
-var STATIC_CACHE = 'currency-converter-static-v3';
+var STATIC_CACHE = 'currency-converter-static-v4';
 var APP_SHELL = [
   './',
   './index.html',
+  './favicon.png',
   './vendor/bootstrap/css/bootstrap.min.css',
+  './vendor/font-awesome/css/font-awesome.min.css',
   './css/landing-page.css',
   './img/bg-masthead.jpg',
-  './img/bg-showcase-1.jpg',
-  './img/bg-showcase-2.jpg',
-  './img/bg-showcase-3.jpg',
-  './img/favicon.png',
-  './img/testimonials-1.jpg',
-  './img/testimonials-2.jpg',
-  './img/testimonials-3.jpg',
-  './vendor/jquery/jquery.min.js',
-  './vendor/bootstrap/js/bootstrap.bundle.min.js',
   './js/currency-converter.js'
 ];
 
